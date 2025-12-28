@@ -121,8 +121,8 @@ export default function Dashboard() {
                                     <div className="text-green-400 flex items-start gap-2">
                                         <CheckCircle className="shrink-0 mt-1" size={16} />
                                         <div>
-                                            <span className="font-semibold">{data.safeLeaves}</span> Safe Leaves Remaining
-                                            <p className="text-xs text-slate-400 mt-1">You can miss {data.safeLeaves} more classes and stay above 75%.</p>
+                                            <span className="font-semibold">{data.safeLeaves}</span> Safe Bunks Remaining
+                                            <p className="text-xs text-slate-400 mt-1">You can skip {data.safeLeaves} more classes this semester.</p>
                                         </div>
                                     </div>
                                 ) : (
@@ -130,7 +130,7 @@ export default function Dashboard() {
                                         <AlertCircle className="shrink-0 mt-1" size={16} />
                                         <div>
                                             Attend <span className="font-semibold">{data.classesToAttend}</span> more classes
-                                            <p className="text-xs text-slate-400 mt-1">You are currently below the required 75% threshold.</p>
+                                            <p className="text-xs text-slate-400 mt-1">To get back to 75% current attendance.</p>
                                         </div>
                                     </div>
                                 )}

@@ -50,6 +50,8 @@ export default function CalendarPage() {
                 ? fullData.settings.timetable[dayName]
                 : {};
 
+            const isFuture = isAfter(startOfDay(selectedDate), startOfDay(new Date()));
+
             const newRecord = {};
             for (let i = 0; i < 4; i++) {
                 // Existing record > Default Timetable > Empty
@@ -58,13 +60,12 @@ export default function CalendarPage() {
                     newRecord[i] = existingSlot;
                 } else {
                     const defaultSubject = defaultSubjects[i] || '';
+                    // Default to 'Present' if we have a subject and it's not a future date
+                    const defaultStatus = (defaultSubject && defaultSubject !== 'Free' && !isFuture) ? 'Present' : '';
+
                     newRecord[i] = {
                         subject: defaultSubject,
-                        // If it's a default subject (not Free/Empty), we default status to empty (user must choose) 
-                        // OR we leave it empty. 
-                        // User request: "make the user only enter present or absent"
-                        // So we Pre-fill subject.
-                        status: ''
+                        status: defaultStatus
                     };
                 }
             }
