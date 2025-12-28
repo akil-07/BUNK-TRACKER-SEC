@@ -53,7 +53,7 @@ export const calculateStats = (data) => {
 
             // If it's a known slot
             if (slot) {
-                if (slot.status === 'Free') continue; // Doesn't count
+                if (slot.status === 'Free' || !slot.status) continue; // Doesn't count if free or unmarked
                 if (slot.subject && stats[slot.subject]) {
                     // If it's in the past or today, we count it towards "Conducted"
                     if (!isFuture) {
